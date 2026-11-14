@@ -1,0 +1,12 @@
+{
+    "project_name": "webParserDB",
+    "project_path": "",
+    "use_proxy": true,
+    "libraries": [
+        "django==5.1.*",
+        "psycopg2-binary==2.9.*",
+        "pymysql==1.1.*",
+        "cryptography==42.0.*",
+        "python-dotenv==1.0.*"
+    ]
+}

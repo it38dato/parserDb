@@ -1,0 +1,65 @@
+{% extends 'db_manager/base.html' %}
+
+{% block title %}Настройки подключения к БД{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow mb-4">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">⚙️ Настройка параметров внешней БД</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted small">Введите параметры базы данных, которую вы планируете парсить и анализировать.</p>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="db_type" class="form-label">Тип СУБД</label>
+                        <select class="form-select" id="db_type" name="db_type" required>
+                            <option value="postgresql" {% if config.db_type == 'postgresql' %}selected{% endif %}>PostgreSQL</option>
+                            <option value="mysql" {% if config.db_type == 'mysql' %}selected{% endif %}>MySQL</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8 mb-3">
+                            <label for="host" class="form-label">Хост / IP-адрес</label>
+                            <input type="text" class="form-control" id="host" name="host" value="{{ config.host|default:'' }}" placeholder="localhost" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="port" class="form-label">Порт</label>
+                            <input type="number" class="form-control" id="port" name="port" value="{{ config.port|default:'' }}" placeholder="5432" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="db_name" class="form-label">Имя Базы Данных (Database Name)</label>
+                        <input type="text" class="form-control" id="db_name" name="db_name" value="{{ config.db_name|default:'' }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="user_name" class="form-label">Имя пользователя (Логин)</label>
+                        <input type="text" class="form-control" id="user_name" name="user_name" value="{{ config.user_name|default:'' }}" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Пароль</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="{% if config %}•••••••• (оставьте пустым, если не хотите менять){% else %}Введите пароль{% endif %}" {% if not config %}required{% endif %}>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        {% if config %}
+                            <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary">Отмена</a>
+                        {% else %}
+                            <span class="text-danger small">⚠️ Без настроек доступ к поиску закрыт</span>
+                        {% endif %}
+                        <button type="submit" class="btn btn-success">Сохранить параметры</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

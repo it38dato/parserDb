@@ -1,0 +1,85 @@
+{% extends 'db_manager/base.html' %}
+
+{% block title %}Панель управления поиском{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Левая панель: Поиск по таблицам -->
+    <div class="col-md-4 mb-4">
+        <div class="card shadow">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0">🔍 Поиск и навигация</h5>
+            </div>
+            <div class="card-body">
+                <!-- Форма 1: Вывод конкретной таблицы -->
+                <form method="get" class="mb-4">
+                    <label class="form-label font-weight-bold">Просмотр таблицы целиком</label>
+                    <div class="input-group">
+                        <input type="text" name="table" class="form-control" placeholder="Имя таблицы (напр. users)" value="{{ current_table }}">
+                        <button class="btn btn-primary" type="submit">Открыть</button>
+                    </div>
+                </form>
+
+                
+                <hr>
+
+                <!-- Форма 2: Общий поиск по значению -->
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <label for="search_value">Поиск значения по всей БД</label>
+                    <input type="text" id="search_value" name="search_value" value="{{ search_query }}" style="width: 100%; margin-bottom: 10px; padding: 5px;">
+                    
+                    <button type="submit" style="background-color: #198754; color: white; width: 100%; padding: 10px; border: none; cursor: pointer;">
+                        Искать совпадения
+                    </button>
+                </form>
+
+            </div>
+            <div class="card-footer text-muted small">
+                Подключено к: <strong>{{ config.db_name }}</strong> ({{ config.db_type }})
+            </div>
+        </div>
+    </div>
+
+    <!-- Правая панель: Результаты -->
+    <div class="col-md-8 mb-4">
+        <div class="card shadow">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">📄 Результаты запроса</h5>
+            </div>
+            <div class="card-body" style="min-height: 300px;">
+            {% if search_query %}
+                <p style="color: #198754;">Найдено строк: {{ total_found }}</p>
+                
+                <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <thead>
+                        <tr style="background-color: #212529; color: white;">
+                            <th style="padding: 10px; border: 1px solid #333;">База Данных</th>
+                            <th style="padding: 10px; border: 1px solid #333;">Таблица</th>
+                            <th style="padding: 10px; border: 1px solid #333;">Колонка</th>
+                            <th style="padding: 10px; border: 1px solid #333;">Найденное значение</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in results %}
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ row.database }}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ row.table }}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ row.column }}</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">{{ row.value }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" style="padding: 10px; text-align: center; color: #666;">Совпадений не найдено</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p style="color: #666;">Введите значение слева, чтобы начать поиск.</p>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

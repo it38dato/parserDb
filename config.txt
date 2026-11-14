@@ -1,0 +1,24 @@
+PROXY =  --proxy http://Имя доменна прокси сервера с портом для добавления или настроки библиотк в питоне
+DB_USER = Имя пользователя БД джанго
+DB_PASSWORD = Пароль БД Джанго
+DB_HOST = Айпи адрес БД Джанго
+DB_NAME = Название БД Джанго
+EXCEL_FILE_NOKIA = N_Data.xlsb
+TECHNOLOGY_PREFIX_NOKIA = nokia_back_
+TABLE_NOKIA = nokia_back__site, nokia_back__mrbts, nokia_back__bcf, nokia_back__bts, nokia_back__trx, nokia_back__wcel, nokia_back__lncel, nokia_back__hwSran, nokia_back__hw2g, nokia_back__ethlk, nokia_back__lapd, nokia_back__cablink, nokia_back__gnbcf, nokia_back__add, nokia_back__list
+DB_MYSQL_USER = Имя пользователя БД ериксон/нокиа
+DB_MYSQL_PASSWORD = Пароль БД ериксон/нокиа
+DB_MYSQL_ERICSSON_HOST = Айпи адрес БД Ериксон
+DB_MYSQL_NOKIA_HOST = Айпи адрес БД Ноика
+FILTER_TABLE = ericsson_IpTcu
+DIR_NET_NOKIA = L:\OESS\BSS\Zapusk\Nokia\
+DIR_LOC = C:\Users\ЛОКАЛЬНОЕ МЕСТО ХРАНЕНИЯ ВАШЕГО ПРОЕКТА Парсинга БД\parserDB\
+TABLE_ERICSSON = ericsson_back__Site, ericsson_back__IPPlan, ericsson_back__duData, ericsson_back__HW_2G, ericsson_back__GeranCell, ericsson_back__ChannelGroup, ericsson_back__UtranCell, ericsson_back__EUtrancellxDD, ericsson_back__SectorCarrier, ericsson_back__productData, ericsson_back__BB_EthPort, ericsson_back__NTP, ericsson_back__IpBb, ericsson_back__IpTcu, ericsson_back__IpDu, ericsson_back__License, ericsson_back__trx, ericsson_back__G31At, ericsson_back__RiLink, ericsson_back__RET, ericsson_back__add, ericsson_back__list
+DIR_NET_ERICSSON = L:\OESS\BSS\Zapusk\Ericsson\
+EXCEL_FILE_ERICSSON = Er_Data.xlsb
+TECHNOLOGY_PREFIX_ERICSSON = ericsson_back_
+
+BACKUP1 = nokia_site, nokia_mrbts, nokia_bcf, nokia_bts, nokia_trx, nokia_wcel, nokia_lncel, nokia_hwSran, nokia_hw2g, nokia_ethlk, nokia_lapd, nokia_cablink, nokia_gnbcf, nokia_add, nokia_list
+BACKUP2 = nokia_back__site, nokia_back__mrbts, nokia_back__bcf, nokia_back__bts, nokia_back__trx, nokia_back__wcel, nokia_back__lncel, nokia_back__hwSran, nokia_back__hw2g, nokia_back__ethlk, nokia_back__lapd, nokia_back__cablink, nokia_back__gnbcf, nokia_back__add, nokia_back__list
+BACKUP3 = ericsson_Site, ericsson_IPPlan, ericsson_duData, ericsson_HW_2G, ericsson_GeranCell, ericsson_ChannelGroup, ericsson_UtranCell, ericsson_EUtrancellxDD, ericsson_SectorCarrier, ericsson_productData, ericsson_BB_EthPort, ericsson_NTP, ericsson_IpBb, ericsson_IpTcu, ericsson_IpDu, ericsson_License, ericsson_trx, ericsson_G31At, ericsson_RiLink, ericsson_RET, ericsson_add, ericsson_list
+BACKUP4 = ericsson_back__Site, ericsson_back__IPPlan, ericsson_back__duData, ericsson_back__HW_2G, ericsson_back__GeranCell, ericsson_back__ChannelGroup, ericsson_back__UtranCell, ericsson_back__EUtrancellxDD, ericsson_back__SectorCarrier, ericsson_back__productData, ericsson_back__BB_EthPort, ericsson_back__NTP, ericsson_back__IpBb, ericsson_back__IpTcu, ericsson_back__IpDu, ericsson_back__License, ericsson_back__trx, ericsson_back__G31At, ericsson_back__RiLink, ericsson_back__RET, ericsson_back__add, ericsson_back__list
